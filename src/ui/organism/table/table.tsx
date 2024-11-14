@@ -11,13 +11,11 @@ import PaginationProjects from "../paginations/ServicesPagination";
 interface TableProjectsProps {
     dataResponse: IGetProjectsResponse;
     onEdit: (id: number) => void;
-    deleteProject: (id: number) => void;
 }
 
 const TableProjects: React.FC<TableProjectsProps> = ({ dataResponse, onEdit }) => {
     const router = useRouter();
     const { data } = dataResponse;
-    const [projects, setProjects] = useState(data);
 
     const handleDelete = async (id: number) => {
         const confirmDelete = confirm("¿Estás seguro de que deseas eliminar este proyecto?");
@@ -48,7 +46,7 @@ const TableProjects: React.FC<TableProjectsProps> = ({ dataResponse, onEdit }) =
         { label: "Acciones", key: "actions" }
     ];
 
-    const formatedData = projects.map((project) => ({
+    const formatedData = data.map((project) => ({
         title: project.title,
         description: project.description,
         startDate: project.startDate,

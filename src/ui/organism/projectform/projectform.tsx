@@ -53,7 +53,6 @@ const ProjectForm = ({ projectID, closeModal }: IProps) => {
                 try {
                     const response = await fetch(`/api/projects/get/${projectID}`);
                     const data : IGetProjectsResponseID = await response.json();
-                    console.log(data);
 
                     const startDate = new Date(data.data.startDate).toISOString().split('T')[0];
                     const endDate = new Date(data.data.endDate).toISOString().split('T')[0];
@@ -76,18 +75,34 @@ const ProjectForm = ({ projectID, closeModal }: IProps) => {
 
 
     const handleProject = async (data: IProjectRequest) => {
-        const response = await fetch('/api/projects/create', {
-            method: 'POST',
-            body: JSON.stringify(data)
-        })
+        if (projectID) {
+            const response = await fetch(`/api/projects/update/${projectID}`, {
+                method: 'PATCH',
+                body: JSON.stringify(data)
+            });
 
-        if (!response) {
-            console.log('Error el enviar el formulario :(');
+            console.log('Actualizado');
+
+            if (!response) {
+                console.log('Error el enviar el formulario :(');
+            }
+
+        } else {
+            const response = await fetch('/api/projects/create', {
+                method: 'POST',
+                body: JSON.stringify(data)
+            })
+
+            if (!response) {
+                console.log('Error el enviar el formulario :(');
+            }
         }
 
         router.refresh();
         closeModal();
     }
+
+
 
     return (
         <form className={styles.form} onSubmit={handleSubmit(handleProject)}>
