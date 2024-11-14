@@ -32,6 +32,28 @@ const Navbar: React.FC = () => {
       setProjectID(undefined);
   };
 
+  const downloadReport = async () => {
+    try {
+        const response = await fetch('/api/projects/download');
+
+        if (!response.ok) {
+            throw new Error('No se pudo descargar el archivo');
+        }
+
+        const blob = await response.blob();
+
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'reporte-proyecto.xlsx';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+    } catch (error) {
+        console.error('Error al descargar el archivo:', error);
+    }
+};
+
   return (
     <nav className={styles.nav}>
         <div className={styles.items}>
@@ -39,7 +61,7 @@ const Navbar: React.FC = () => {
         </div>
 
         <div className={styles.itemscontainer}>
-            <Button className="primary-icons">{icons.download} Descargar reporte</Button>
+            <Button className="primary-icons" onClick={downloadReport}>{icons.download} Descargar reporte</Button>
             <Button onClick={openModal} >nuevo proyecto</Button>
             <div className={styles.infoUser}>
                 <img
