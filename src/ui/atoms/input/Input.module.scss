@@ -1,0 +1,28 @@
+@import '../../../styles/variables';
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.inputField {
+  padding: 0.5rem 1rem;
+  border: 1px solid $color-border;
+  border-radius: 0.5rem;
+  color: #4b5563;
+  font-size: 1rem;
+  font-family: var(--font-principal);
+
+  &:focus {
+    outline: none;
+  }
+
+}
+
+.errorMessage {
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  color: $color-error;
+  font-weight: 500;
+}

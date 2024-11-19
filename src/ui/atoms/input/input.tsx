@@ -1,3 +1,5 @@
+import styles from './Input.module.scss';
+
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 
     placeholder?: string;
@@ -15,18 +17,17 @@ export const Input=({
 
   return (
     <div className="flex flex-col mb-4">
+      <div className='styles.inputContainer'>
 <input
         type={type}
         name={name}
         placeholder={placeholder}
-        className={`px-4 py-2 border  rounded-lg text-gray-700 
-            placeholder-gray-400 focus:outline-none focus:ring-2 
-            focus:ring-blue-500 focus:border-transparent
-            ${error ? "border-red-500" : "border-gray-300"}`}
-            {...props}
+        className={`${styles.inputField} ${error ? styles.error : ""}`}
+                {...props}
       />
-      {error && <p className="text-red-500 text-xs mt-1">This field is required</p>}
+      {error && <p className={styles.errorMessage}>This field is required</p>}
     
+    </div>
     </div>
   )
 
