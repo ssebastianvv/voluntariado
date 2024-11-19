@@ -1,15 +1,15 @@
+@import '../../../styles/variables';
+
 
 .tableContainer {
-    width: 100%;
-    overflow-x: auto;
-    margin-bottom: 20px;
+  background-color: $color-primary;
+  width: 98%;
+  margin: 1%;
   }
   
   .table {
-    width: 80%;
-    border-collapse: collapse;
-    margin-left: 18%;
-    font-size: 10px;
+    font-size: 0.9rem;
+    width: 98%;
     
   }
   

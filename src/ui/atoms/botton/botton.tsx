@@ -1,3 +1,6 @@
+import styles from './button.module.scss';
+
+
 interface buttonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   type?: any;
   name?: string;

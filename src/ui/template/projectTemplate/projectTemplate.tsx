@@ -5,6 +5,7 @@ import styles from './template.module.scss';
 import { useState } from "react";
 import Modal from "@/ui/organism/modal/modal";
 import ProjectForm from "@/ui/organism/projectform/projectform";
+import PanelCards from '@/ui/organism/panelCards/PanelCards';
 
 
 
@@ -31,6 +32,7 @@ const ProjectsPageTemplate: React.FC<IProps> = ({ dataResponse }) => {
 
     return (
         <div className={styles.container}>
+             <PanelCards data={dataResponse}></PanelCards>
 
             <TableProjects dataResponse={dataResponse} onEdit={handleEdit}></TableProjects>
 

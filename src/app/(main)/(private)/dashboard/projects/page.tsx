@@ -6,8 +6,6 @@ import { redirect } from "next/navigation";
 import ProjectsPageTemplate from "@/ui/template/projectTemplate/projectTemplate";
 import { ProjectService } from "@/app/infraestructure/services/project.services";
 
-
-
 interface IProps {
   searchParams: {
       page: string;
